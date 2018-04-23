@@ -34,11 +34,20 @@
                 <input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000"/>
 
                 <div>
-                    <div id="filedrag" onclick="document.getElementById('fileselect').click()">Upload or Drop Zip files here</div>
+                    <div id="filedrag" onclick="document.getElementById('fileselect').click()">upload or drop zip files here</div>
                 </div>
+            </form>
+            <div id="form">
                 <label for="fileselect">Upload files:</label>
                 <input type="file" id="fileselect" name="fileselect[]" multiple="multiple"/>
-            </form>
+            </div>
+            <div id="select-file-type">
+                Select File Type:&nbsp;&nbsp;&nbsp;
+                <select>
+                    <option>Photos (ZIP File)</option>
+                    <option>Videos (MP4, etc.)</option>
+                </select>
+            </div>
         </div>
 
         <div id="alert" class="alert" style="display: none;">

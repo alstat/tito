@@ -80,6 +80,15 @@ legend
 	color: #333;
 }
 
+div#form {
+	display: inline;
+}
+
+div#select-file-type {
+	float: right;
+	text-align: right;
+}
+
 #filedrag
 {
 	display: none;
