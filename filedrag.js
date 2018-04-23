@@ -66,12 +66,14 @@ Developed by Craig Buckler (@craigbuckler) of OptimalWorks.net
 		} 
 		
 		else{
-			console.log("You dropped the file! ANd we are parsing it!");
+			console.log("You dropped the file! and we are parsing it!");
 		// fetch FileList object
 		var files = e.target.files || e.dataTransfer.files;
 		
 		// process all File objects
 		for (var i = 0, f; f = files[i]; i++) {
+
+			console.log(f);
 			ParseFile(f);
 		}
 	  }
@@ -374,10 +376,7 @@ Developed by Craig Buckler (@craigbuckler) of OptimalWorks.net
             timeout = window.setTimeout(foamtree.resize, 300);
           }
         })());
-		
-		$id("reset_btn").addEventListener("click", resetValues, false);
-		$id("analyze_btn").addEventListener("click", analyzeValues, false);
-	
+
 
 /******************************************************************/
 
