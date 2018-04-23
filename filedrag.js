@@ -74,10 +74,34 @@ Developed by Craig Buckler (@craigbuckler) of OptimalWorks.net
 		for (var i = 0, f; f = files[i]; i++) {
 
 			console.log(f);
+			fileTypeChecker(f);
 			ParseFile(f);
 		}
 	  }
 
+	}
+
+	function fileTypeChecker(f) {
+		var fileExtension = f["name"].split(".").pop();
+
+		if ($id("select-input-type").value === "Photos (ZIP File)") {
+			var expectedExtension = "zip";
+		} else if ($id("select-input-type").value === "Videos (MP4, etc.)") {
+			var expectedExtension = "mp4";
+		}
+
+		if (fileExtension === expectedExtension) {
+			console.log("Recieved ZIP file");
+		} else if (
+			fileExtension === expectedExtension || 
+			fileExtension === "mkv" ||
+			fileExtension === "3gp"
+		) {
+			console.log("Received Video");
+		} else {
+			alert("Expected input " + $id("select-input-type").value + ", but received a " + fileExtension + " file.");
+		}
+		return null
 	}
 
 	
