@@ -71,8 +71,7 @@ Developed by Craig Buckler (@craigbuckler) of OptimalWorks.net
 		var files = e.target.files || e.dataTransfer.files;
 		
 		// process all File objects
-		for (var i = 0, f; f = files[i]; i++) {
-
+		for (var i = 0, f; f = files[i]; i++) {			
 			console.log(f);
 			fileTypeChecker(f);
 			ParseFile(f);
@@ -82,6 +81,7 @@ Developed by Craig Buckler (@craigbuckler) of OptimalWorks.net
 	}
 
 	function fileTypeChecker(f) {
+		$id("loading").style.display = "block";
 		var fileExtension = f["name"].split(".").pop();
 
 		if ($id("select-input-type").value === "Photos (ZIP File)") {
@@ -101,6 +101,7 @@ Developed by Craig Buckler (@craigbuckler) of OptimalWorks.net
 		} else {
 			alert("Expected input " + $id("select-input-type").value + ", but received a " + fileExtension + " file.");
 		}
+		// $id("loading").style.display = "none";
 		return null
 	}
 
