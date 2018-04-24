@@ -30,7 +30,6 @@ Developed by Craig Buckler (@craigbuckler) of OptimalWorks.net
 		m.innerHTML = msg + m.innerHTML;
 	}
 
-
 	// file drag hover
 	function fileDragHover(e) {
 		e.stopPropagation();
@@ -49,11 +48,7 @@ Developed by Craig Buckler (@craigbuckler) of OptimalWorks.net
 		// dragged image from HTML page
 		if (typeof e.dataTransfer != 'undefined' && e.dataTransfer.files.length === 0) {
 			console.log('received image from outside!');
-			concepts = SendFlaskRequest(e.dataTransfer.getData('text'));
-			DisplayKeywords(concepts, e.dataTransfer.getData('text'))
 		} else {
-			console.log("You dropped the file! and we are parsing it!");
-			// fetch FileList object
 			var files = e.target.files || e.dataTransfer.files;
 
 			// process all File objects
@@ -88,7 +83,6 @@ Developed by Craig Buckler (@craigbuckler) of OptimalWorks.net
 		} else {
 			alert("Expected input " + $id("select-input-type").value + ", but received a " + fileExtension + " file.");
 		}
-		// $id("loading").style.display = "none";
 		return null
 	}
 
@@ -96,10 +90,6 @@ Developed by Craig Buckler (@craigbuckler) of OptimalWorks.net
 		var reader = new FileReader();
 		reader.readAsDataURL(f);
 		reader.onload = function () {
-			console.log("Here is the decoded string, first 100");
-			console.log(reader.result.slice(0, 100));
-			console.log("Here is the decoded string, last 100");
-			console.log(reader.result.slice(reader.result.length - 100, reader.result.length));
 			var data = reader.result;
 
 			function callback(output) {
