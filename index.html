@@ -34,7 +34,11 @@
                 <input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000"/>
 
                 <div>
-                    <div id="filedrag" onclick="document.getElementById('fileselect').click()">upload or drop zip files here</div>
+                    <div id="filedrag" onclick="document.getElementById('fileselect').click()">
+                        <div id="drag-drop-label">
+                            upload or drop zip files here
+                        </div>
+                    </div>
                 </div>
             </form>
             <div id="form">
@@ -60,6 +64,9 @@
                 Output
             </span>
             <div id="image_div">
+                <div id="loading" style="display: none; text-align:center; margin: 70px 0px;">
+                    <img src="assets/img/Spinner-1s-200px.gif" width="100px;">
+                </div>
             </div>
         </div>
 <!-- 
