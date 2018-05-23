@@ -15,6 +15,7 @@ Developed by Craig Buckler (@craigbuckler) of OptimalWorks.net
 	// URL Calls to flask server
 	URL_ZIP_FILE = HOST + "/zip_file"
 	URL_TRAIN = HOST + "/train"
+	URL_ANALYZE = HOST + "/analyze"
 	// - - - - - - - - - - - - - - - - - - - - - //
 
 	var output_data = [];
@@ -106,7 +107,7 @@ Developed by Craig Buckler (@craigbuckler) of OptimalWorks.net
 	function train() {
 		function callback(output) {
 			console.log(output);
-			alert(output);
+			$id("accuracy").innerHTML = output;
 		}
 		sendRequest(URL_TRAIN, {}, callback);
 	}
@@ -114,7 +115,7 @@ Developed by Craig Buckler (@craigbuckler) of OptimalWorks.net
 	function analyze() {
 		function callback(output) {
 			console.log(output)
-			alert(output);
+			$id("frames").innerHTML = output;
 		}
 		sendRequest(URL_ANALYZE, {}, callback);
 	}

@@ -3,7 +3,7 @@ from flask import jsonify
 from flask import request
 import json
 
-from functions import handle_zip, train
+from functions import handle_zip, train, analyze
 
 HOST = '127.0.0.1'
 PORT = 5000
@@ -38,7 +38,7 @@ def analyze_it():
     Function for triggering training of the model
     """
     print("request received: analzing the model")
-    resp = jsonigy(analyze("Hello! This is the result of analysis from Flask backend!"))
+    resp = jsonify(analyze("Hello! This is the result of analysis from Flask backend!"))
     resp.headers.add("Access-Control-Allow-Origin", "*")
     return resp
 
