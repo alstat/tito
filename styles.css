@@ -63,6 +63,26 @@ div#parent-container div#output-container span.title {
 	padding: 10px;
 }
 
+button {
+	padding: 5px 20px;
+	margin: 2px; 
+	border-radius: 2px;
+	border-width: 0;
+	background-color: rgba(0,0,0,0.1);
+	color: black;
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+}
+
+button:hover {
+	background-color: rgba(0,0,0,0.7);
+	color: white;
+}
+
+button:active {
+	background-color: black;
+}
+
 h1, h2
 {
 	font-size: 1.5em;

@@ -14,6 +14,7 @@ Developed by Craig Buckler (@craigbuckler) of OptimalWorks.net
 
 	// URL Calls to flask server
 	URL_ZIP_FILE = HOST + "/zip_file"
+	URL_TRAIN = HOST + "/train"
 	// - - - - - - - - - - - - - - - - - - - - - //
 
 	var output_data = [];
@@ -102,6 +103,20 @@ Developed by Craig Buckler (@craigbuckler) of OptimalWorks.net
 		};
 	}
 	
+	function train() {
+		function callback(output) {
+			console.log(output);
+		}
+		sendRequest(URL_TRAIN, {}, callback);
+	}
+
+	function analyze() {
+		function callback(output) {
+			console.log(output)
+		}
+		sendRequest(URL_ANALYZE, {}, callback);
+	}
+
 	function sendRequest(URL, data, callback) {
 		var xhr = new XMLHttpRequest();
 		xhr.open("POST", URL, true);
@@ -153,4 +168,11 @@ Developed by Craig Buckler (@craigbuckler) of OptimalWorks.net
 		Init();
 	}
 
+	$id("train-btn").addEventListener("click", function () {
+		train();
+	})
+
+	$id("analyze-btn").addEventListener("click", function () {
+		analyze();
+	})
 })();
