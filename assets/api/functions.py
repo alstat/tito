@@ -22,7 +22,7 @@ def save(data, path = os.getcwd(), name = "decoded_file", fext = ".zip"):
     """
     inp_file = decode(data)
 
-    f = path + "/" + name + fext                 # default filename
+    f = path + "/data/" + name + fext            # default filename
     with open(f, "wb") as d:                     # write the file as a zip file again
         d.write(inp_file)
 
@@ -35,8 +35,8 @@ def extract(inp_path, out_path = os.getcwd(), name = "decoded_file"):
         out_path: string, default: current directory, directory where the unzip file will be saved
         name    : string, default: "decoded_file", zip filename with no file extension
     """
-    zip_data = zipfile.ZipFile(inp_path + "/" + name + ".zip", "r")
-    zip_data.extractall(out_path + "/" + name)
+    zip_data = zipfile.ZipFile(inp_path + "/data/" + name + ".zip", "r")
+    zip_data.extractall(out_path + "/data/" + name)
     zip_data.close()
 
 def handle_zip(data, filename = "decoded_file"):
@@ -50,3 +50,9 @@ def handle_zip(data, filename = "decoded_file"):
     save(data, name = filename)
     extract(os.getcwd(), name = filename)
     return {"response" : "Hey, here is the response"}
+
+def train(args):
+    return args
+
+def analyze(args):
+    return args
