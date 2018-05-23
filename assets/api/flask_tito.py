@@ -28,7 +28,7 @@ def train_it():
     Function for triggering training of the model
     """
     print("request received: training the model")
-    resp = jsonify(train("hellow pow!"))
+    resp = jsonify(train("Hello! This is the result of training from Flask backend!"))
     resp.headers.add("Access-Control-Allow-Origin", "*")
     return resp
 
@@ -38,7 +38,7 @@ def analyze_it():
     Function for triggering training of the model
     """
     print("request received: analzing the model")
-    resp = jsonigy(analyze("Heyow! Analyzeing Pow!"))
+    resp = jsonigy(analyze("Hello! This is the result of analysis from Flask backend!"))
     resp.headers.add("Access-Control-Allow-Origin", "*")
     return resp
 

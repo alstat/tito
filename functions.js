@@ -106,6 +106,7 @@ Developed by Craig Buckler (@craigbuckler) of OptimalWorks.net
 	function train() {
 		function callback(output) {
 			console.log(output);
+			alert(output);
 		}
 		sendRequest(URL_TRAIN, {}, callback);
 	}
@@ -113,6 +114,7 @@ Developed by Craig Buckler (@craigbuckler) of OptimalWorks.net
 	function analyze() {
 		function callback(output) {
 			console.log(output)
+			alert(output);
 		}
 		sendRequest(URL_ANALYZE, {}, callback);
 	}
