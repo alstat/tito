@@ -5,6 +5,7 @@ import json
 
 from functions import handle_zip, train, analyze
 
+# HOST AND PORT
 HOST = '127.0.0.1'
 PORT = 5000
 
