@@ -69,6 +69,40 @@
                 </div>
             </div>
         </div>
+
+        <div id="tools-container">
+            <span class="title">
+                Tools
+            </span>
+            <div id="tools-container">
+                <div id="output-container">
+                    <div id="button-container">
+                        <button id="train-btn">Train</button><button id="analyze-btn">Analyze</button>
+                    </div> 
+                    <div id="tools-output">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>Accuracy:</td><td><span id="accuracy"></span></td>
+                                </tr>
+                                <tr>
+                                    <td>Runtime:</td><td><span id="runtime"></td>
+                                </tr>
+                                <br>
+                                <br>
+                                <br>
+                                <tr>
+                                    <td># of Frames:</td><td><span id="noOfFrames"></span></td>
+                                </tr>
+                                <tr>
+                                    <td>Runtime:</td><td><span id="impRuntime"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
 <!-- 
         <div id="text_div">
         </div> -->
@@ -78,7 +112,7 @@
         <!-- Include Hammer.js for mobile interactions. Not required for desktop-only apps. -->
         <script src="assets/js/hammer.min.js"></script>
 
-        <script src="filedrag.js"></script>
+        <script src="functions.js"></script>
     </div>
 </body>
 
