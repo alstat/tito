@@ -1,4 +1,4 @@
-import os
+import os, time
 import base64
 import zipfile
 
@@ -52,7 +52,93 @@ def handle_zip(data, filename = "decoded_file"):
     return {"response" : "Hey, here is the response"}
 
 def train(args):
-    return args
+    # [TITO] Pre-processing of profile images
+    facenetLib = 'assets/facenet-for-tito/'
+    import subprocess
+    filename = "data\decoded_file"
+    
+    # Pre-processing
+    print('Pre-processing . . . ')
+    tito_preprocess_profiles()
+    print('Pre-processing completed.')
+
+    # Training
+    print('Training . . . ')
+    batch_accuracy, batch_runtime = tito_train()
+    print('Training completed.')
+
+    results = {}
+    results["accuracy"] = batch_accuracy
+    results["runtime"] = batch_runtime
+
+    print(results)
+    return results 
+    #"{accuracy: "+ str(batch_accuracy) + ", runtime: " + str(batch_runtime)+"}"
+
+def tito_preprocess_profiles():
+    '''
+    '''
+    filepath = os.path.realpath(__file__)
+    filepath = os.path.dirname(filepath)
+    input_dir = filepath+'\..\..\data\decoded_file\profiles'
+    output_dir = filepath+'\..\..\output\profiles_inter'
+    crop_dim = 180
+
+    from tito_facenet import preprocess
+
+    #preprocess.predefine()
+    preprocess.main(input_dir, output_dir, crop_dim)
+
+def tito_train():
+    '''
+    '''
+    from tito_facenet import use_classifier as tito_classify
+
+    filepath = os.path.realpath(__file__)
+    filepath = os.path.dirname(filepath)
+
+    facenetLib = filepath+'/../../assets/api/tito_facenet'
+    log_dir = 'lfw'
+    input_dir = filepath+'\..\..\output\profiles_inter'
+    classifier_path = filepath+'\..\..\output\model\classifier_test.pkl'
+    model_path = facenetLib + '\etc/20170511-185253/20170511-185253.pb'
+    num_threads = 16
+    num_epochs = 5
+    min_images_per_class = 5
+    batch_size = 128
+    split_ratio = 0.8
+    
+    if not os.path.exists(filepath+'/../../output/'+log_dir):
+        os.makedirs(filepath+'/../../output/'+log_dir)
+
+    # Data preparation: splitting of training and test set
+    train, test = tito_classify._data_prep(   input_directory=input_dir, 
+                                min_images_per_labels=min_images_per_class, 
+                                split_ratio=split_ratio)
+    
+    # Training of the model: set is_train=True
+    xx, batch_runtime = tito_classify.main(   dataset=train, input_directory=input_dir, 
+                                model_path=model_path, 
+                                classifier_output_path=classifier_path,
+                                batch_size=batch_size,
+                                num_threads=num_threads,
+                                num_epochs=num_epochs,
+                                min_images_per_labels=min_images_per_class,
+                                split_ratio=split_ratio, is_train=True)
+
+    # Testing of the model: set is_train=False
+    batch_accuracy, xx = tito_classify.main(  dataset=test, input_directory=input_dir, 
+                                model_path=model_path, 
+                                classifier_output_path=classifier_path,
+                                batch_size=batch_size,
+                                num_threads=num_threads,
+                                num_epochs=num_epochs,
+                                min_images_per_labels=min_images_per_class,
+                                split_ratio=split_ratio, is_train=False)
+
+    return batch_accuracy, batch_runtime
+
+
 
 def analyze(args):
     return args

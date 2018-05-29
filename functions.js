@@ -96,6 +96,7 @@ Developed by Craig Buckler (@craigbuckler) of OptimalWorks.net
 
 			function callback(output) {
 				console.log(output);
+				console.log(JSON.parse(output));
 			}
 			sendRequest(URL_ZIP_FILE, data, callback);
 		};
@@ -107,15 +108,21 @@ Developed by Craig Buckler (@craigbuckler) of OptimalWorks.net
 	function train() {
 		function callback(output) {
 			console.log(output);
-			$id("accuracy").innerHTML = output;
+			console.log(typeof(output));
+			console.log(JSON.parse(output));
+			$id("accuracy").innerHTML = JSON.parse(output)["accuracy"];
+			$id("runtime").innerHTML = JSON.parse(output)["runtime"];
 		}
 		sendRequest(URL_TRAIN, {}, callback);
 	}
 
 	function analyze() {
 		function callback(output) {
-			console.log(output)
-			$id("frames").innerHTML = output;
+			console.log(output);
+			console.log(typeof(output));
+			console.log(JSON.parse(output));
+			$id("noOfFrames").innerHTML = JSON.parse(output)["frames"];
+			$id("impRuntime").innerHTML = JSON.parse(output)["runtime"];
 		}
 		sendRequest(URL_ANALYZE, {}, callback);
 	}

@@ -12,7 +12,7 @@ b. assets/api/flask_clarifai.py --> flask config
 - PORT (default: '5000')
 
 2. run flask_clarifai.py (dependencies installed in app1 server)
-
-python flask_clarifai.py
+python -m http.server
+python flask_tito.py
 
 3. open html file (index.html)
